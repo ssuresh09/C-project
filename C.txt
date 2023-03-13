@@ -1,218 +1,4 @@
 #include <stdio.h>
-
-int main()
-{
-    int p,i;
-    printf("\nEnter the number of product: ");
-    scanf("%d",&p);
-    int fix[p],var[p],sem[p],prod[p],sale[p];
-    int total,id,percentage,pro_stat;
-    for(i=0;i<p;i++)
-    {
-        printf("\nEnter the fixed cost %d: ",i+1);
-        scanf("%d",&fix[i]);
-        printf("\nEnter the variable cost %d: ",i+1);
-        scanf("%d",&var[i]);
-        printf("\nEnter the semi variable cost %d: ",i+1);
-        scanf("%d",&sem[i]);
-        printf("\nEnter the sale cost %d: ",i+1);
-        scanf("%d",&sale[i]);
-    }
-    int key;
-    printf("\nEnter your choice \n1.Sale value of productivity in Percentage\n2.Product status variable cost increased by a percentage\n3.Break even\n");
-    scanf("%d",&key);
-    do{
-    switch(key)
-    {
-        case 1:
-        {
-            //int id;
-            printf("\nEnter the product id [1,2,3]:");
-            scanf("%d",&id);
-            printf("\nEnter the percentage: ");
-           // int percentage;
-            scanf("%d",&percentage);
-            int sale_inc1,sale_inc;
-            sale_inc1=(sale[id-1]*percentage/100);
-            sale[id-1]=sale_inc1 + sale[id-1];
-            printf("\nSale value after percentage increase : %d %d",sale_inc1,sale[id-1]);
-            total=fix[id-1]+var[id-1]+sem[id-1];
-            printf("\nTotal value : %d",total);
-            if(sale[id-1]>total)
-            printf("\nProfit of %d",sale[id-1]-total);
-            else if(sale[id-1]<total)
-            printf("\nLoss of %-d",sale[id-1]-total);
-            else
-            printf("\nNo loss and no profit");
-            break;
-        }
-        case 2:
-        {
-            //int pro_stat;
-            printf("\nEnter the product id [1,2,3]: ");
-            scanf("%d",&id);
-            printf("\nEnter the percentage: ");
-           // int percentage;
-            scanf("%d",&percentage);
-            int var_inc1;
-            var_inc1=(var[id-1]*percentage/100);
-            var[id-1]=var_inc1 + var[id-1];
-            printf("\nVariable cost after increment is %d %d",var_inc1,var[id-1]);
-            total=fix[id-1]+var[id-1]+sem[id-1];
-            printf("\nTotal value : %d",total);
-            pro_stat=total-sale[id-1];
-            printf("\n Product status after increment %d",pro_stat);
-            break;
-        }
-        case 3:
-        {
-            printf("\nEnter the product id [1,2,3]: ");
-            scanf("%d",&id);
-            int x;
-            x=total-sale[id-1];
-            if(x<0)
-            printf("\nBy increasing sale of %-d we get break even",x);
-            else if(x>0)
-            printf("\nBy decreasing sale of %d we get break even",x);
-            else if(x==0)
-            printf("\nThere is no profit and loss");
-            break;
-        }
-        case 4:
-        {
-            printf("\nExit");
-        }
-        default:
-        {
-            printf("\nChoose correct key");
-        }while(key!=4);
-    }
-    return 0;
-}
-
-
-
-
-
-
-
-#include <stdio.h>
-
-int main()
-{
-    int p,i;
-    printf("\nEnter the number of product: ");
-    scanf("%d",&p);
-    int fix[p],var[p],sem[p],prod[p],sale[p];
-    int total,id,percentage,pro_stat;
-    for(i=0;i<p;i++)
-    {
-        printf("\nEnter the fixed cost %d: ",i+1);
-        scanf("%d",&fix[i]);
-        printf("\nEnter the variable cost %d: ",i+1);
-        scanf("%d",&var[i]);
-        printf("\nEnter the semi variable cost %d: ",i+1);
-        scanf("%d",&sem[i]);
-        printf("\nEnter the sale cost %d: ",i+1);
-        scanf("%d",&sale[i]);
-    }
-    int key;
-    
-    do
-    {
-        printf("\nEnter your choice \n1.Sale value of productivity in Percentage\n2.Product status variable cost increased by a percentage\n3.Break even\n4.Exit\n");
-        scanf("%d",&key);
-        switch(key)
-        {
-            case 1:
-            {
-                //int id;
-                printf("\nEnter the product id [%d]:",p);
-                scanf("%d",&id);
-                if(id<p && id>0)
-                {
-                    printf("\nEnter the percentage: ");
-                    // int percentage;
-                    scanf("%d",&percentage);
-                    int sale_inc1,sale_inc;
-                    sale_inc1=(sale[id-1]*percentage/100);
-                    sale[id-1]=sale_inc1 + sale[id-1];
-                    printf("\nSale value after percentage increase : %d %d",sale_inc1,sale[id-1]);
-                    total=fix[id-1]+var[id-1]+sem[id-1];
-                    printf("\nTotal value : %d\n",total);
-                    if(sale[id-1]>total)
-                    printf("\nProfit of %d\n",sale[id-1]-total);
-                    else if(sale[id-1]<total)
-                    printf("\nLoss of %-d\n",sale[id-1]-total);
-                    else
-                    printf("\nNo loss and no profit\n");
-                    
-                }
-                else
-                {
-                    printf("\nNot valid\n");
-                    
-                }
-                break;
-            }
-            case 2:
-           // label case 2:
-            {
-                //int pro_stat;
-                printf("\nEnter the product id [%d]: ",p);
-                scanf("%d",&id);
-                if(id>0 && id<p)
-                {
-                    printf("\nEnter the percentage: ");
-                    // int percentage;
-                    scanf("%d",&percentage);
-                    int var_inc1;
-                    var_inc1=(var[id-1]*percentage/100);
-                    var[id-1]=var_inc1 + var[id-1];
-                    printf("\nVariable cost after increment is %d %d",var_inc1,var[id-1]);
-                    total=fix[id-1]+var[id-1]+sem[id-1];
-                    printf("\nTotal value : %d",total);
-                    pro_stat=total-sale[id-1];
-                    printf("\n Product status after increment %d\n",pro_stat);
-                }
-                else
-                {
-                    printf("\nInvalid id\n");
-                    //goto case 2;
-                }
-                break;
-            }
-            case 3:
-            {
-                printf("\nEnter the product id [1,2,3]: ");
-                scanf("%d",&id);
-                int x;
-                x=total-sale[id-1];
-                if(x<0)
-                printf("\nBy increasing sale of %-d we get break even",x);
-                else if(x>0)
-                printf("\nBy decreasing sale of %d we get break even",x);
-                else if(x==0)
-                printf("\nThere is no profit and loss");
-                break;
-            }
-            case 4:
-            {
-                printf("\nExit");
-            }
-            default:
-            {
-                printf("\nChoose correct key");
-            }//}   while(key!=4);
-        }
-    }while(key!=4);
-    
-    return 0;
-}
-
-
-
-#include <stdio.h>
 int sum_value(int x,int y,int z)
 {
     int sum;
@@ -248,20 +34,17 @@ int main()
         {
             case 1:
             {
-                //int id;
                 printf("\nEnter the product id [%d]:",p);
                 scanf("%d",&id);
                 if(id-1<p && id>0)
                 {
                     printf("\nEnter the percentage: ");
-                    // int percentage;
                     scanf("%d",&percentage);
                     int sale_inc1,sale_inc;
                     sale_inc1=(sale[id-1]*percentage/100);
                     sale[id-1]=sale_inc1 + sale[id-1];
                     printf("\nSale value after percentage increase : %d %d",sale_inc1,sale[id-1]);
-                    total=sum_value(fix[id-1],var[id-1],sem[id-1]);
-                  //  total=fix[id-1]+var[id-1]+sem[id-1];
+                    total=sum_value(fix[id-1],var[id-1],sem[id-1]);                 
                     printf("\nTotal value : %d\n",total);
                     if(sale[id-1]>total)
                     printf("\nProfit of %d\n",sale[id-1]-total);
@@ -279,7 +62,6 @@ int main()
                 break;
             }
             case 2:
-           // label case 2:
             {
                 //int pro_stat;
                 printf("\nEnter the product id [%d]: ",p);
@@ -287,7 +69,6 @@ int main()
                 if(id>0 && id-1<p)
                 {
                     printf("\nEnter the percentage: ");
-                    // int percentage;
                     scanf("%d",&percentage);
                     int var_inc1;
                     var_inc1=(var[id-1]*percentage/100);
@@ -301,7 +82,6 @@ int main()
                 else
                 {
                     printf("\nInvalid id\n");
-                    //goto case 2;
                 }
                 break;
             }
@@ -333,7 +113,7 @@ int main()
             default:
             {
                 printf("\nChoose correct key");
-            }//}   while(key!=4);
+            }
         }
     }while(key!=4);
     
